@@ -42,4 +42,4 @@
 - Decryption: Dk(c) = (c - k) mod 26
 - The minimum value of K is 1
 ### Decryption
-[![Decryption](Assets/Decryption.png)](Assets/Decryption.png)
+[![Decryption](Asset/Decryption.png)](Asset/Decryption.png)
