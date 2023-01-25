@@ -43,3 +43,28 @@
 - The minimum value of K is 1
 ### Decryption
 [![Decryption](Asset/Decryption.png)](Asset/Decryption.png)
+### Substitution ciphers
+- How to break it
+    - Brute force attack
+        - How many posible substitution alphabet?
+            - 26! = 4.032.914.560.992.000.000
+        - Let try all permutation
+- What can be cryptographers' counter-moves?
+    - *Polyalphabetic ciphers*
+        - Use multiple substitution alphabets
+    - *Homophonic ciphers*
+        - multiple possible  output characters for an input character
+    - *Polygraphic ciphers*
+        - Encipher groups of letters at once
+
+### Cryptonalysis
+- Cryptanalysis is the study of how to break a cryptosystem
+
+
+### Vigeneré cipher
+- A polyalphabetic cipher
+- How to break a Vigenere cipher
+    - Diffucult in general
+    - First, find the key length
+        - Could use brute force attack to try all possible key length
+    - Then for each key length
