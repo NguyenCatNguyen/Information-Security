@@ -1,10 +1,12 @@
 # Information-Security
  
-## Classic Cryptography 
+## Lecture 3: Classic Cryptography 
 - Terminology: Cryptography, Cryptosystem
 - Caesar cipher, shift ciphers, substitution ciphers
 - Frequency analysis
-
+- `Cipher` is a method of hiding the meaning of a message
+- `Cipher attack` is a method of breaking a cipher
+- `Ciphertext` is the result of encryption
 ### Security goals
 - Confidentiality : only sender and the intended receiver understand message  content.
 - Message integrity: receiver can ensure message is not altered ( in transit or afterwards)
@@ -68,3 +70,45 @@
     - First, find the key length
         - Could use brute force attack to try all possible key length
     - Then for each key length
+
+## Lecture 4: Symmetric cryto
+### Vernam Cipher
+- Plaintext and keystream are both letters
+- Key is the same length as plaintext
+- ciphertext = plaintext + key (mod 26)
+#### Vernam cipher machine
+- Three tapes: plaintext, key, ciphertext
+
+    `This also know as the one-time pad`
+#### One-Time Pad (OTP)
+- The `same key` is used for encryption and decryption - a secret key encryption scheme.
+- Example
+##### What potential problems does OTP have?
+- Key must be as long as the plaintext
+    - This requirement is impractical in most realistic scenarios. For highly confidential traffic such as diplomatic and intelligence communication.
+- Key must be truly random
+    - Key must be as long as the plaintext.
+    - Insecure if the key is reused
+        - Attacker can directly obtain XOR of the plaintexts. 
+- No guarantee of integrity 
+    - Attacker can change the ciphertext without being detected
+    - Attacker cannot recover plaintext, but can easily change it to something else. 
+### Cipher design techniques
+- `Substitution` one set of bits is exchange for another.
+- `Transposition` rearrange the order of ciphertext to break the repeated patterns in the plaintext. 
+#### Transposition ciphers
+- Core idea: rearrange the order of ciphertext to break the repeated patterns in the plaintext.
+- Columnar Transposition:
+    - Use a two-dimensional array
+    - Write plaintext in rows
+    - Read ciphertext in columns
+##### General Transposition
+- How to determine if it is a transposition cipher?
+    - We can use common letter pains (diagrams), triples (trigrams) to figure out d.
+    - Transposition is a permutation.
+- To make it stronger, we can combine substitution and permutations
+    - Substitution adds confusion
+    - Transposition adds diffusion
+##### Combination of Approaches
+- `Confusion` make the relationship between plaintext and ciphertext as complex as posible
+- `Diffusion` dissipate the statiscal structure of the plaintext in the longrange statistic of the ciphertext. 
