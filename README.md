@@ -112,3 +112,18 @@
 ##### Combination of Approaches
 - `Confusion` make the relationship between plaintext and ciphertext as complex as posible
 - `Diffusion` dissipate the statiscal structure of the plaintext in the longrange statistic of the ciphertext. 
+#### Cryptography
+- A good cryptosystem should be infeasible to:
+    - enumerate all possible keys
+    - find the key from any reasonable anount of ciphertext and plaintext by enumerating possible keys.
+    - produce plaintext from ciphertext without the key.
+    - distinguish ciphertext from true random values.
+
+### Mordern Cryptography
+#### Symmetric Encryption Algorithms
+- Two cryptographic primitives
+    - Block ciphers
+        - Encrypt blocks of plaintext, one block at a time
+    - Stream ciphers
+        - Encrypt one symbol at a time
+- 
