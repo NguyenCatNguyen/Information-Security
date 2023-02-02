@@ -1,4 +1,34 @@
 # Information-Security
+
+## Index
+- [Lecture 1: Introduction](#lecture-1-introduction)
+- [Lecture 2: Information Security](#lecture-2-information-security)
+- [Lecture 3: Classic Cryptography](#lecture-3-classic-cryptography)
+    - [Security goals](#security-goals)
+    - [Terminology: Cryptography](#terminology-cryptography)
+        - [Cryptography](#cryptography)
+        - [Cryptosystem](#cryptosystem)
+        - [What should we know?](#what-should-we-know)
+    - [Caesar cipher](#caesar-cipher)
+    - [Shift ciphers](#shift-ciphers)
+    - [Decryption](#decryption)
+    - [Substitution ciphers](#substitution-ciphers)
+    - [Cryptonalysis](#cryptonalysis)
+    - [Vigeneré cipher](#vigeneré-cipher)
+- [Lecture 4: Symmetric cryto](#lecture-4-symmetric-cryto)
+    - [Vernam Cipher](#vernam-cipher)
+        - [Vernam cipher machine](#vernam-cipher-machine)
+        - [One-Time Pad (OTP)](#one-time-pad-otp)
+            - [What potential problems does OTP have?](#what-potential-problems-does-otp-have)
+    - [Cipher design techniques](#cipher-design-techniques)
+        - [Transposition ciphers](#transposition-ciphers)
+            - [Columnar Transposition:](#columnar-transposition)
+            - [General Transposition](#general-transposition)
+            - [Transposition Cipher Example](#transposition-cipher-example)
+    
+- [Lecture 5: Block Cipher DES](#lecture-5-block-cipher-des)
+- [Lecture 6: Block Cipher and Modes of Operation](#lecture-6-block-cipher-and-modes-of-operation)
+
  
 ## Lecture 3: Classic Cryptography 
 - Terminology: Cryptography, Cryptosystem
@@ -44,7 +74,7 @@
 - Decryption: Dk(c) = (c - k) mod 26
 - The minimum value of K is 1
 ### Decryption
-[![Decryption](Asset/Decryption.png)](Asset/Decryption.png)
+[![Decryption](Graphics/Decryption.png)](Graphics/Decryption.png)
 ### Substitution ciphers
 - How to break it
     - Brute force attack
@@ -126,4 +156,28 @@
         - Encrypt blocks of plaintext, one block at a time
     - Stream ciphers
         - Encrypt one symbol at a time
-- 
+
+## Lecture 5: Block Cipher DES
+
+
+
+
+
+
+## Lecture 6: Block Cipher and Modes of Operation
+### Advanced Encryption Standard (AES)
+    - AES is a symmetric block cipher
+    - Rijndael is Standardized as AES
+        - clean,fast, good security margin
+
+### Rijndael 
+- Efficient: 
+    - Not a Feistel cipher: in each round, it operates on all
+bits, instead of just half of them, so 2 rounds provide a full diffusion.
+- Small number of rounds: 10, 12, or 14 for 128, 192, and 256-bit keys, respectively.
+- For example, 3DES requires 48 rounds, and AES-128 requires only 10 rounds.
+- Simple implementation: 
+    - It view bytes as elements in the finite fiedld GF(2^8), so `substitution`, `permutation`, `shift` operations can be done by table lookups.
+[![AES](Graphics/AES.png)](Graphics/AES.png)
+
+[![AES_graph] (Graphics/AES_graph.png)](Graphics/AES_graph.png)
