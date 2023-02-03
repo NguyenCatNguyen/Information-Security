@@ -173,11 +173,42 @@
 ### Rijndael 
 - Efficient: 
     - Not a Feistel cipher: in each round, it operates on all
-bits, instead of just half of them, so 2 rounds provide a full diffusion.
-- Small number of rounds: 10, 12, or 14 for 128, 192, and 256-bit keys, respectively.
-- For example, 3DES requires 48 rounds, and AES-128 requires only 10 rounds.
+bits, instead of just half of them, so 2 rounds provide a full 
+diffusion.
+- Small number of rounds: 10, 12, or 14 for 128, 192, and 
+256-bit keys, respectively.
+- For example, 3DES requires 48 rounds, and AES-128 requires 
+only 10 rounds.
 - Simple implementation: 
     - It view bytes as elements in the finite fiedld GF(2^8), so `substitution`, `permutation`, `shift` operations can be done by table lookups.
-[![AES](Graphics/AES.png)](Graphics/AES.png)
 
-[![AES_graph] (Graphics/AES_graph.png)](Graphics/AES_graph.png)
+
+[![AES](Graphics/AES.png)](Graphics/AES.png)
+### AES State Array
+- AES keeps a state array of 4x4 bytes columns
+    - Fill in and read out column by column
+    - Perform a byte-for-byte substitution on the state array.
+    - Padding is necessary if message is not a multiple of 16 bytes.
+
+[![AES_graph](Graphics/AES_graph.png)](Graphics/AES_graph.png)
+
+#### 1. SubBytes
+- Byte substitution
+    - Use S-box to covert a byte in the input state array into 
+    another byte in the output state array. 
+    - S-box is a 256-element array (16-by-16 matrix)
+
+
+
+#### 2. ShiftRows
+- Cyclically `left shift` bytes in each row by an offset. 
+
+[![ShiftRows](Graphics/Shift_row.png)](Graphics/Shift_row.png)
+
+#### 3. MixColumns
+[![MixColumns](Graphics/MixColumn.png)](Graphics/MixColumn.png)
+
+#### 4. AddRoundKey
+[![AddRoundKey](Graphics/AddRoundKey.png)](Graphics/AddRoundKey.png)
+### AES Key Expansion
+- Key expansion: `wi = f(wi-4, wi-1)
