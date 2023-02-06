@@ -19,7 +19,6 @@
     - [Vernam Cipher](#vernam-cipher)
         - [Vernam cipher machine](#vernam-cipher-machine)
         - [One-Time Pad (OTP)](#one-time-pad-otp)
-            - [What potential problems does OTP have?](#what-potential-problems-does-otp-have)
     - [Cipher design techniques](#cipher-design-techniques)
         - [Transposition ciphers](#transposition-ciphers)
             - [Columnar Transposition:](#columnar-transposition)
@@ -211,4 +210,4 @@ only 10 rounds.
 #### 4. AddRoundKey
 [![AddRoundKey](Graphics/AddRoundKey.png)](Graphics/AddRoundKey.png)
 ### AES Key Expansion
-- Key expansion: `wi = f(wi-4, wi-1)
+- Key expansion: `wi = f(wi-4, wi-1)`
