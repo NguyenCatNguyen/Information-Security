@@ -1,22 +1,37 @@
+import string
 
+def vigenere_brute_force_attack(dictionary_file, key_length, first_word_length, ciphertext):
+    # Load the dictionary into memory
+    with open(dictionary_file, 'r') as file:
+        dictionary = set(word.strip().lower() for word in file)
 
+    # Generate all possible keys
+    keys = [''.join(chr(i + ord('a')) for i in range(26)) for j in range(key_length)]
 
+    # Loop through all keys
+    for key in keys:
+        # Decrypt the ciphertext using the key
+        decrypted_text = ''.join(chr(((ord(c) - ord('a') - ord(key[i % key_length])) + 26) % 26 + ord('a')) for i, c in enumerate(ciphertext.lower()))
 
-#- The algorithm for encryption: EK(m) = m + K mod 26
+        # Get the first word of the decrypted text
+        first_word = decrypted_text[:first_word_length]
 
-#ciphertext += chr((ord(plaintext[i]) + ord(key[i % len(key)])) % 26 + 65)
-def Vigeneres(plaintext, key):
-    plaintext = plaintext.upper()
-    key = key.upper()
-    ciphertext = ""
-    length = len(plaintext)
-    for i in range(length):
-        if plaintext[i] == " ":
-            ciphertext += " "
-        else:
-            # The algorithm for encryption: EK(m) = m + K mod 26
-            ciphertext += chr((ord(plaintext[i]) + ord(key[i % len(key)])) % 26 + 65)
-    return ciphertext
+        # Check if the first word is in the dictionary
+        if first_word in dictionary:
+            print(f"Possible decrypted text: {decrypted_text}")
+            print(f"Key: {key}")
 
+# Test the function
+# Output:
+# Possible decrypted text: thequickbrownfoxjumpsoverthelazydog
+# Key: ab
 
-# ciphertext += chr()
+#Why the code not work
+
+def Encrypt(plaintext, key):
+    cyphertext = ""
+    for letter in plaintext:
+        if letter == "":
+            cyphertext  += ""
+        
+
