@@ -33,27 +33,34 @@
 - Terminology: Cryptography, Cryptosystem
 - Caesar cipher, shift ciphers, substitution ciphers
 - Frequency analysis
+- Terminology: Cryptanalysis, Cryptology.
+- Vigenere cipher, polyalphabetic ciphers.
 - `Cipher` is a method of hiding the meaning of a message
 - `Cipher attack` is a method of breaking a cipher
 - `Ciphertext` is the result of encryption
-### Security goals
+### I. Security goals
 - Confidentiality : only sender and the intended receiver understand message  content.
 - Message integrity: receiver can ensure message is not altered ( in transit or afterwards)
-- End-point authentication: sender and receiver can confirm
+- End-point authentication: sender and receiver can confirm the identity of each other.
 
-### Terminology: Cryptography
-#### Cryptography
+### II. Terminology: Cryptography
+#### 1. Cryptography
 - Cryptography conceals data against unauthorized access
     - It includes encipherment, digital signature, authentication exchange,..
     - Intruder who may try to block, intercept, modify, or fabricate the message
         - Eve: eavesdropper
         - Mallory: malicious attacker
-- Encryption is the process of encoding a message so that its meaning is not obvious.
-#### Cryptosystem
+- `Encryption` is the process of encoding a message so that its meaning is not obvious.
+- `Decryption` is the process of decoding a message so that its meaning is obvious.
+#### 2. Cryptosystem
 - Cryptosystem is a system for encryption and decryption
-- Cryptographic algorithm (aka cipher) is a mathematical function that transforms plaintext into ciphertext
-
-#### What should we know?
+    - A cryptographic algorithm
+    - A set of all possible plaintexts
+    - A set of all possible ciphertexts
+    - A set of all possible keys
+- Cryptographic algorithm (aka cipher) is a mathematical function that transforms plaintext into ciphertext.
+    - The algorithm that takes a key to convert plaintext to ciphertext and back. 
+#### 3. What should we know?
 - To understand cryptography, we want to know:
     1. The way in which the plaintext is transformed into ciphertext
         - cryptographic algorithms.
@@ -61,14 +68,16 @@
         - block ciphers, stream ciphers
     3. How key is generated and used
         - 1 key, 2 key, no key
-### Caesar cipher
+### III. Classic Cryptography.
+#### 1. Caesar cipher
 - Every character is replaced with the character 3 slots to the right
 - Example: 
     - Plaintext: `ATTACKATFIVE`
     - Ciphertext: `DWWDFNDWIKLH`
     - One of the oldest cryptosystems
-    - A very simple substitution cipher
-### Shift ciphers
+    - A very simple `shift cipher`, which is a monoalphabetic `substitution cipher`.
+#### 2. Shift ciphers
+![Shift ciphers](Graphics/Shift_cipher.png)
 - Encryption: Ek(m) = (m + k) mod 26
 - Decryption: Dk(c) = (c - k) mod 26
 - The minimum value of K is 1
@@ -211,3 +220,52 @@ only 10 rounds.
 [![AddRoundKey](Graphics/AddRoundKey.png)](Graphics/AddRoundKey.png)
 ### AES Key Expansion
 - Key expansion: `wi = f(wi-4, wi-1)`
+
+
+## Lecture 8: Public Key Cryptography
+
+### Outline
+- Modern cryptography
+    - Public key Cryptography  (PKC)
+        - RSA
+        - Diffie-Hellman
+        - DSA
+        - ECC
+    - Hash
+    - Message Authentication Code (MAC)
+
+
+### Digital  Signature Applications
+- Authenticated key exchange
+- Digital certificates and public key infrastructure
+
+### Elliptic Curve Cryptography (ECC)
+- Elliptic curve cryptography (ECC) is a method of public-key cryptography based on the algebraic structure of elliptic curves over finite fields.
+- The Koblitz curve `y^2 = x^3 + ax + b`
+
+### Hash Functions
+
+[![Hash](Graphics/Hash_Function.png)](Graphics/Hash_Function.png)
+
+- Hash function is a one-way function
+    - It is easy to compute the hash value of a message
+    - It is hard to find a message that has a given hash value
+
+
+# Lecture 10: Authentication - Public Key Infrastructure (PKI)
+## Recall: Cryptography
+- Secret Key Cryptography
+    - Both communicating parties have acess to a shared random string K, called the key
+    - How do you securely share a key?
+        - 
+- Public Key Cryptography
+    - Each party creates a public key pk and a secret key sk.
+    - Keep sk to yourself and share pk with others.
+    - Hard concept to understand, and revolutionary. Inventors won 
+## Authenticity of Public Keys
+- How do you know if the public key you received is really the correct public key?
+    - => This is an authentication problem
+
+## PKI
+- **Goal of authentication**: bind identity to card/token/password/key
+- **Public key infrastructure (PKI)**: bind identity to public key
