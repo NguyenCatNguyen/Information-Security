@@ -106,14 +106,14 @@ cycles to test one key. How much time on average does he need to find the correc
 ```
 - `Key exhaustive attack`: is an attack that tries all possible keys to find the correct key.
 - Answer:
-    - The total number of keys is 2^{192}.
+    - The total number of keys is $2^{192}$.
     - The time to test one key is 100 cycles.
     - The CPU speed is 4GHz.
 
     $$(2^{192}*100)/(4*10^{9}) = 1.57*10^{50}$$
 
-- So it take about 1.57*10^{50} seconds to find the correct encryption key.
-- That equivalent to 4.9*10^{42} years.
+- So it take about $1.57*10^{50}$ seconds to find the correct encryption key.
+- That equivalent to $4.9*10^{42}$ years.
 
  
 
