@@ -4,40 +4,29 @@
 - [Lecture 1: Introduction](#lecture-1-introduction)
 - [Lecture 2: Information Security](#lecture-2-information-security)
 - [Lecture 3: Classic Cryptography](#lecture-3-classic-cryptography)
-    - [Security goals](#security-goals)
-    - [Terminology: Cryptography](#terminology-cryptography)
-        - [Cryptography](#cryptography)
-        - [Cryptosystem](#cryptosystem)
-        - [What should we know?](#what-should-we-know)
-    - [Caesar cipher](#caesar-cipher)
-    - [Shift ciphers](#shift-ciphers)
-    - [Decryption](#decryption)
-    - [Substitution ciphers](#substitution-ciphers)
-    - [Cryptonalysis](#cryptonalysis)
-    - [Vigeneré cipher](#vigeneré-cipher)
 - [Lecture 4: Symmetric cryto](#lecture-4-symmetric-cryto)
-    - [Vernam Cipher](#vernam-cipher)
-        - [Vernam cipher machine](#vernam-cipher-machine)
-        - [One-Time Pad (OTP)](#one-time-pad-otp)
-    - [Cipher design techniques](#cipher-design-techniques)
-        - [Transposition ciphers](#transposition-ciphers)
-            - [Columnar Transposition:](#columnar-transposition)
-            - [General Transposition](#general-transposition)
-            - [Transposition Cipher Example](#transposition-cipher-example)
-    
 - [Lecture 5: Block Cipher DES](#lecture-5-block-cipher-des)
 - [Lecture 6: Block Cipher and Modes of Operation](#lecture-6-block-cipher-and-modes-of-operation)
 
+***
  
 ## Lecture 3: Classic Cryptography 
+### Table of Contents
+- [I. Security goals](#i-security-goals)
+- [II. Terminology: Cryptography](#ii-terminology-cryptography)
+    - [1. Cryptography](#1-cryptography)
+    - [2. Cryptosystem](#2-cryptosystem)
+    - [3. What should we know?](#3-what-should-we-know)
+- [III. Classic Cryptography.](#iii-classic-cryptography)
+### Terminology
+- `Cipher` is a method of hiding the meaning of a message
+- `Cipher attack` is a method of breaking a cipher
+- `Ciphertext` is the result of encryption 
 - Terminology: Cryptography, Cryptosystem
 - Caesar cipher, shift ciphers, substitution ciphers
 - Frequency analysis
 - Terminology: Cryptanalysis, Cryptology.
 - Vigenere cipher, polyalphabetic ciphers.
-- `Cipher` is a method of hiding the meaning of a message
-- `Cipher attack` is a method of breaking a cipher
-- `Ciphertext` is the result of encryption
 ### I. Security goals
 - Confidentiality : only sender and the intended receiver understand message  content.
 - Message integrity: receiver can ensure message is not altered ( in transit or afterwards)
@@ -108,7 +97,7 @@
     - First, find the key length
         - Could use brute force attack to try all possible key length
     - Then for each key length
-
+***
 ## Lecture 4: Symmetric cryto
 ### Vernam Cipher
 - Plaintext and keystream are both letters
@@ -164,13 +153,13 @@
         - Encrypt blocks of plaintext, one block at a time
     - Stream ciphers
         - Encrypt one symbol at a time
-
+***
 ## Lecture 5: Block Cipher DES
 
 
 
 
-
+***
 
 ## Lecture 6: Block Cipher and Modes of Operation
 ### Advanced Encryption Standard (AES)
