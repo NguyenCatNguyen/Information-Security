@@ -37,7 +37,8 @@ position "0". A detailed mapping is provided as follows.
 
 ### Problem 2:
 ```
-- What is polyalphabetic substitution cipher? Compared with shift cipher, discuss two major differences between the two ciphers.
+- What is polyalphabetic substitution cipher? Compared with shift cipher, discuss two major 
+differences between the two ciphers.
 ```
 
 - `Polyalphabetic substitution cipher`: is a type of substitution cipher that use multiple alphabets to encrypt the plaintext.
@@ -50,8 +51,9 @@ number of positions down the alphabet.
 
 ### Problem 3:
 ```
-- One-time pad is used to encrypt messages. If an attacker obtains the ciphertext and the corresponding plaintext message, can 
-he find the encryption key? Does this mean OTP is vulnerable to the known-plaintext attacks?
+- One-time pad is used to encrypt messages. If an attacker obtains the ciphertext and the 
+corresponding plaintext message, can he find the encryption key? Does this mean OTP is 
+vulnerable to the known-plaintext attacks?
 ```
 - No, the attacker cannot directly find the encryption key, but he can find the key by using the `XOR` operation. And the 
 attacker can change the plaintext to something else by using the key.
