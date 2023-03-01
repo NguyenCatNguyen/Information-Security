@@ -4,20 +4,18 @@
 def xor(first, second):
    return bytearray(x^y for x,y in zip(first, second))
 
-MSG   = "A message"
-HEX_1 = "aabbccddeeff1122334455"
-HEX_2 = "1122334455778800aabbdd"
+MSG   = "This is a known message!"
+HEX_1 = "a469b1c502c1cab966965e50425438e1bb1b5f9037a4c159"
+HEX_2 = "bf73bcd3509299d566c35b5d450337e1bb175f903fafc15"
 
 # Convert ascii string to bytearray
-D1 = bytes(MSG, 'utf-8')
+msg = bytearray(MSG, 'utf-8')
 
 # Convert hex string to bytearray
-D2 = bytearray.fromhex(HEX_1)
-D3 = bytearray.fromhex(HEX_2)
+hex1 = bytearray.fromhex(HEX_1)
+hex2 = bytearray.fromhex(HEX_2)
 
-r1 = xor(D1, D2)
-r2 = xor(D2, D3)
-r3 = xor(D2, D2)
-print(r1.hex())
-print(r2.hex())
-print(r3.hex())
+C1 = bytearray.fromhex("a469b1c502c1cab966965e50425438e1bb1b5f9037a4c159")
+C2 = bytearray.fromhex("bf73bcd3509299d566c35b5d450337e1bb175f903fafc159")
+P2 = xor(C2, C1)
+print(P2.decode('utf-8'))
