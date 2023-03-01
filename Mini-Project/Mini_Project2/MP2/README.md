@@ -1,5 +1,9 @@
 # Report Mini Project 2
 
+## Information
+- Name: Nguyen Cat Nguyen
+- Student ID: 3077463
+- Due date: 2/28/2023
 
 ## Task 1
 
@@ -12,12 +16,14 @@
 - Command use:
 ```
 - Encrypt:
-	openssl enc -aes-128-cbc -e -in plain.txt -out cipher1.txt -K 
-	00112233445566778899aabbccddeeff -iv 01020304050607080910111213141516
+	openssl enc -aes-128-cbc -e -in plain.txt -out cipher1.txt 
+	-K 00112233445566778899aabbccddeeff 
+	-iv 01020304050607080910111213141516
 
 - Decrypt:
-	openssl enc -aes-128-cbc -d -in cipher1.txt -out plain1.txt -K
-	00112233445566778899aabbccddeeff -iv 01020304050607080910111213141516
+	openssl enc -aes-128-cbc -d -in cipher1.txt -out plain1.txt 
+	-K 00112233445566778899aabbccddeeff 
+	-iv 01020304050607080910111213141516
 ```
 	
 #### cipher 2
@@ -26,11 +32,13 @@
 - Command use:
 ```
 - Encrypt:
-	openssl enc -aes-128-cfb -e -in plain.txt -out cipher2.txt -K 00112233445566778899aabbccddeeff 
+	openssl enc -aes-128-cfb -e -in plain.txt -out cipher2.txt 
+	-K 00112233445566778899aabbccddeeff 
 	-iv 01020304050607080910111213141516
 
 - Decrypt:
-    openssl enc -aes-128-cfb -d -in cipher2.txt -out plain2.txt -K 00112233445566778899aabbccddeeff
+    openssl enc -aes-128-cfb -d -in cipher2.txt -out plain2.txt 
+	-K 00112233445566778899aabbccddeeff
 	 -iv 01020304050607080910111213141516
 
 ```
@@ -42,10 +50,12 @@
 - Command use:
 ```
 - Encrypt: 
-	- openssl enc -aes-128-ecb -e -in plain.txt -out cipher3.txt -K 00112233445566778899aabbccddeeff
+	- openssl enc -aes-128-ecb -e -in plain.txt -out cipher3.txt 
+	-K 00112233445566778899aabbccddeeff
 
 - Decrypt:
-	- openssl enc -aes-128-ecb -d -in cipher3.txt -out plain3.txt -K 00112233445566778899aabbccddeeff
+	- openssl enc -aes-128-ecb -d -in cipher3.txt -out plain3.txt
+	 -K 00112233445566778899aabbccddeeff
 ```
 ### Part 2: Encrypt and Decrypt a picture file.
 #### ECB:
@@ -155,9 +165,11 @@ yes "this is a text file" | head -c 1KB > f2.txt
 #### ECB:
 ```
 - Encrypt: 
-- openssl enc -aes-128-ecb -e -in f2.txt -out f2ECB.txt -k 00112233445566778899aabbccddeeff
+- openssl enc -aes-128-ecb -e -in f2.txt -out f2ECB.txt -k 
+00112233445566778899aabbccddeeff
 - Decrypt:
-- openssl enc -aes-128-ecb -d -in f2ECB.txt -out f2ECB_d.txt -k 00112233445566778899aabbccddeeff
+- openssl enc -aes-128-ecb -d -in f2ECB.txt -out f2ECB_d.txt -k 
+00112233445566778899aabbccddeeff
 ```
 
 - Picture before corrupt
@@ -174,10 +186,12 @@ yes "this is a text file" | head -c 1KB > f2.txt
 #### CBC: 
 ```
 - Encrypt:
-- openssl enc -aes-128-cbc -e -in f2.txt -out f2CBC.txt -k 00112233445566778899aabbccddeeff
+- openssl enc -aes-128-cbc -e -in f2.txt -out f2CBC.txt -k 
+00112233445566778899aabbccddeeff
  -iv 000102030405060708090a0b0c0d0e0f
 - Decrypt:
-- openssl enc -aes-128-cbc -d -in f2CBC.txt -out f2CBC_d.txt -k 00112233445566778899aabbccddeeff 
+- openssl enc -aes-128-cbc -d -in f2CBC.txt -out f2CBC_d.txt -k
+ 00112233445566778899aabbccddeeff 
 -iv 000102030405060708090a0b0c0d0e0f
 ```	
 - Picture before corrupt
@@ -192,10 +206,12 @@ yes "this is a text file" | head -c 1KB > f2.txt
 #### CFB: 
 ```
 - Encrypt:
-- openssl enc -aes-128-cfb -e -in f2.txt -out f2CFB.txt -k 00112233445566778899aabbccddeeff 
+- openssl enc -aes-128-cfb -e -in f2.txt -out f2CFB.txt -k 
+00112233445566778899aabbccddeeff 
 -iv 000102030405060708090a0b0c0d0e0f
 - Decrypt:
-- openssl enc -aes-128-cfb -d -in f2CFB.txt -out f2CFB_d.txt -k 00112233445566778899aabbccddeeff 
+- openssl enc -aes-128-cfb -d -in f2CFB.txt -out f2CFB_d.txt -k 
+00112233445566778899aabbccddeeff 
 -iv 000102030405060708090a0b0c0d0e0f
 ```
 - Picture before corrupt
@@ -211,9 +227,11 @@ yes "this is a text file" | head -c 1KB > f2.txt
 #### OFB:
 ```
 - Encrypt:
-- openssl enc -aes-128-ofb -e -in f2.txt -out f2OFB.txt -k 00112233445566778899aabbccddeeff
+- openssl enc -aes-128-ofb -e -in f2.txt -out f2OFB.txt -k 
+00112233445566778899aabbccddeeff
 - Decrypt:
-- openssl enc -aes-128-ofb -d -in f2OFB.txt -out f2OFB_d.txt -k 00112233445566778899aabbccddeeff
+- openssl enc -aes-128-ofb -d -in f2OFB.txt -out f2OFB_d.txt -k
+ 00112233445566778899aabbccddeeff
 ```
 - Picture before corrupt
 
@@ -268,11 +286,14 @@ the ciphertext. Using different iv will help prevent this attack.
 ### Part2 find the unknow plaintext
 #### Question 4. 
 ```
-Based on your result, is aes-128-ofb secure when the same IV is used? If aes-128-cfb
-is used, how much of P2 can be revealed?
+Based on your result, is aes-128-ofb secure when the same IV is used? 
+If aes-128-cfb is used, how much of P2 can be revealed?
 ```
-	- Based on the result we can see that the aes-128-ofb is not secure when the same IV is used. The attacker
-	can easily decrypt the ciphertext and get the plaintext. 
+
+
+	- Based on the result we can see that the aes-128-ofb is not secure when 
+	the same IV is used. The attacker can easily decrypt the ciphertext and 
+	get the plaintext. 
 	- If aes-128-cfb is used, 
 
 - The decrypt answer for P2 is `This is a secret message`
