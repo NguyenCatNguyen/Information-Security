@@ -258,3 +258,21 @@ only 10 rounds.
 ## PKI
 - **Goal of authentication**: bind identity to card/token/password/key
 - **Public key infrastructure (PKI)**: bind identity to public key
+
+
+
+## Software Security
+### Software Bugs
+- Software bugs have two type of security implications:
+    - The flaw affects the `correctness` of a program's result.
+    - A non-malicious flaw can be `exploited` by attacker maliciously.
+### Security vs Quality
+- Software security differs from software quality
+- Attacks target specific bugs resulting in a failure that can be exploited. 
+- The input trigging a bug differs dramatically.
+    - Testing a bug is to make sure the code does what it's supposed to do.
+    - Testing a security bug is to verify the code doesn't do anything it is not supposed to do. 
+
+### Rootkits
+- `Rootkit` is the attack package that attains the root privilege. 
+    - Rootkits intercept and change standard OS processes.
