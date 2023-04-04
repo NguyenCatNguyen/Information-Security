@@ -120,10 +120,7 @@
 - `Password managers` are software programs that store and manage passwords
     - What happen when password manager is compromised?
         - Password manager is a single point of failure
-        - Password manager can be compromised by malware
-        - Password manager can be compromised by social engineering
-        - Password manager can be compromised by brute force attack
-        - Password manager can be compromised by insider attack
+        - Malware, social engineering, brute force attack, insider attack
 - `Graphical passwords` easy to remember, no need to write down
     - Draw a picture, select a point, select a color
     - Side channel attack may reveal the password
@@ -135,21 +132,24 @@
     -  Google: Password + SMS
     - FIDO: Password + hardware
 ###  Distributed authentication
-#### a. Threads
-- `User Impersonation: a malicious 
-
-
-
-
-
-
-
-
-    - Basic concepts
-    - Kerberos
-    - SAML
-    - OAuth
+#### Basic concepts
+- Potential threats
+    - `User impersonation`: a malicious user with access to a workstation pretends to be another user using the same station.
+    - `Network impersonation`: a malicious user changes the network address of his workstation to impersonate another workstation.
+    - `Eavesdropping`, `message modification`, and `replay` attacks
+- How to prove user's identity when requesting services from machines on the network?
+    - Many to many authentication: m clients, n servers
+    - Public-key based solution: need m+n public-private key pairs -- PKI
+    - Secret-key based solution: mxn secret keys shared between each(client,server)
+        - Better solution? Kerberos
+- What can be expect?
+    - `Secure` against attacks by passive eavesdroppers and active malicious attackers
+    - `Transparent` so that users do not notice authentication and users' effort is minimal.
+    - `Scalable` to serve a number of users and servers
 ### Kerberos
+#### Kerberos Overview
+- `PIC6`
+- `Key idea`: use a trusted third party to authenticate users
 Kerberos system
 What is the responsibility of each server
     - Scenario,design goals
@@ -159,7 +159,7 @@ What is the responsibility of each server
     -Kerberos Single Sign-On (SSO)
 
 ## DS Security
-- Basic concepts
+###  Basic concepts
     - CIA
 - Inference attacks
     - Tracker attack
