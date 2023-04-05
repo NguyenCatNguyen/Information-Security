@@ -7,6 +7,7 @@
     - By using a secret key, the AS can verify the identity of Alice
 - `Certificates` is a token containing:
     `PIC1`
+
 ### II.Public-Key Infrastructure (PKI)
 - PKI: bind  identity to public key
     - Crucial as people will use key to communicate with principal whose identity is bound to key
@@ -29,6 +30,7 @@
         - Hash collisions: Obsolete hash algorithms
         - Weak security at CAs: attackes can issue rogue certificates
         - Users not aware of attacks happening
+
 ### III.Certificate
 - Certificate Authority (CA)
     - CA is a trusted third party who issues certificates
@@ -52,11 +54,12 @@
         - Distributed to clients
         - Clients check OCSP before using certificate
 - Rogue Certificate `PIC5`
+  
 ### IV.Password authentication
 - Authentication is the process of verifying the identity of a user or system.
 - How do you prove to someone that you are who u claim to be?
     - Show **credential**
-- Credential can be
+- Credential can be:
     - Something you know (password, certificate,..)
     - Something you have (token, IP address, hardware/moblie device,..)
     - Something you are (biometric)
@@ -107,6 +110,7 @@
     - With salting, attacker must pre-compute hashes of all dictionary words once
         - for **EACH** password entry (with 12 bit salt, same password can have 2^12 = 4096 different hashes)
         - for all hash algorithms, attacker must try all dictionary words for each salt value in the password file
+        - 
 #### d.Other Password Security Risks
 - Weak password, default password, keystroke loggers, broken implementations, social engineering,
 - Password strength
@@ -116,6 +120,7 @@
         - Password reuse
         - Password sharing
         - Heavy reuse
+        - 
 #### e.Way to improve password security
 - `Password managers` are software programs that store and manage passwords
     - What happen when password manager is compromised?
@@ -131,7 +136,9 @@
     - Levarage **more than one** authentication mechanism  for authentication
     -  Google: Password + SMS
     - FIDO: Password + hardware
+    - 
 ###  Distributed authentication
+
 #### Basic concepts
 - Potential threats
     - `User impersonation`: a malicious user with access to a workstation pretends to be another user using the same station.
@@ -146,26 +153,122 @@
     - `Secure` against attacks by passive eavesdroppers and active malicious attackers
     - `Transparent` so that users do not notice authentication and users' effort is minimal.
     - `Scalable` to serve a number of users and servers
-### Kerberos
-#### Kerberos Overview
-- `PIC6`
-- `Key idea`: use a trusted third party to authenticate users
-Kerberos system
-What is the responsibility of each server
-    - Scenario,design goals
-    - Architecture
-    - The protocol, ticket, session key, authenticator
-    - Short-term credentials
-    -Kerberos Single Sign-On (SSO)
 
+### Kerberos
+
+#### Kerberos Overview
+- `Key idea`: use a trusted third party to authenticate users
+- 
+#### Kerberos step
+1. Send password to AS - insecure to send plaintext password
+    - Convert "password" into client master key: Ka
+    - Ka is shared with Key Distribution Center (KDC)
+2. Issue ticket - ticket needs to be encrypted. Otherwise, it can be forged.
+    - Client -> KDC: "I am Alice, I want to talk to Bob"
+        -  IDa, IDb, timestamp, lifetime, TGT
+    - KDC -> Client: encrypted session key and ticket
+        - Eka(Ka-b, IDb, Tb)
+            - Ka-b: session key geneerateed by KDC for Alice and Bob
+            - Tb = EKb(Ka-b, IDa, IDb)
+3. `PIC6`
+4. 
+#### Kerberos Messages
+- `PIC7`
+- `PIC8`
+
+#### Kerberos Discussion
+- The first `single sign-on` system - sign-on once, access all resources
+- The design goal `PIC9`
+- Scenario `PIC10`
+
+- The protocal
+
+#### Kerberos Term keys
+- `PIC11`
+- It provides a centralized authentication service.
+- It can support mutual authentication
+- Entirely based on symmetric cryptography
+- Less keys to remember for clients
+    - KDC maintains `long-term secret keys` for each client and server, but servers don't.
+    - Client requests `short-term session keys`(ticket + session key) from KDC and manages them locally.
+- Less communication overhead(client sends both ticket and authenticator toserver, so no need to wait)
+- More scalable  in  a large distributed system.
+#### Kerberos Security
+- The protocol, ticket, session key, authenticator
+- `PIC12`
+- `PIC13`
 ## DS Security
 ###  Basic concepts
     - CIA
-- Inference attacks
-    - Tracker attack
-    - Possible controls
-- Access control
-    - Policy vs enforcement mechanism
+### Inference attacks
+#### Tracker attack
+#### Controls for Inference Attacks
+- `Three paths` to follow:
+    - Suppress obviously sensitive information (easy to implement, but it hurts database usability)
+    - Track what the user knows (costly to implement)
+        - Used to limit queries accepted and data provided
+-   Disguise the data using random perturbation, rounding, swapping (cause new problem with precision)
+    - Applied only to the released data
+    - “Differential Privacy”
+#### Possible controls
+- Query controls
+    – Limit overlap between new and previous queries.
+-  Item controls
+    – Suppression: query is rejected without sensitive data provided.
+        ■ Limited response, combined results, random sample
+    – Concealing: the answer is close to but not exactly the actual answer.
+-  Partitioning
+    – Cluster records into exclusive groups and only allow queries on entire groups.
+### Access control
+- `Access control` is the process of restricting access to objects in a system
+- `Access control policy` specifies the authorized accesses of a system.
+    - Managed by the  database administrator (DBA)
+- `Access control mechanism` implements and enforces the policy.
+    - Implemented in AC models, enforced by DBMS.
+#### Access control models 
+- `Subject` the active entity that requests access to an object
+- `Object` the passive entity accessed by a subject
+- `Access Operation` how a subject is allowed to access an object
+- Similar access control for OS
+    - Mandatory access control (MAC)
+    - Discretionary access control (DAC)
+    - Role-based access control (RBAC)  
+#### DAC
+- `Discretionary access control (DAC)` is a form of access control in which access rights are assigned to objects based on the identity of the subject requesting access.
+- Widely used in multi-user systems
+- What does `discretionary` mean?
+    - Access to data objects(files, directories, etc..) is **permitted based on the identity of the user**.
+    - Users can be given the ability of **passing on their privileges** to other users.
+    - **granting** and **revoking** privileges is regulated by an  administrative policy.
+
+- `Subjects`
+    - A user is referred to by authorization ID(Typically, the login name.)
+    - There is an authorization ID: “PUBLIC” (Granting a privilege to PUBLIC makes it available to any authorization ID.)
+- `Objects` (on which privileges exist)
+    - In database systems, the objects include stored tables and views.
+    - Other privileges are the right to create objects of a type, e.g., triggers.
+- `Privileges`
+    - A file system identifies certain privileges on the objects (i.e., files) that it manages, typically, read, write, execute.
+#### Role-based access control (RBAC)
+- `Role-based access control (RBAC)` is a form of access control in which access rights are assigned to users based on their roles within an enterprise.
+- AC is centered around the concept of a role.
+
+
+- `RBAC` is a semantic construct. 
+- Access control is centered around roles
+- It provides good flexibility and
+
+
+
+
+
+
+
+
+
+
+
+
     - Access control models: DAC, RBAC
     - DAC: subjects and privileges, GRANT/REVOKE
     - RBAC
@@ -191,27 +294,7 @@ Different type of injection attack
 Risk condition: time of change
 
 
-# Authentication
 
-## Public-Key Infrastructure(PKI)
-
-Goal of authentication: bind identity to card/token/password/key
-- Public key infrastructure: bind identity to public key
-– Crucial as people will use key to communicate with principal whose identity is bound to key
-– Erroneous binding means no secrecy between principals
-– Assume principal identified by an acceptable name – called Common Name
-
-## A PKI consists of:
-Certificates
-Certificates Authority(CA)
-What is a trust
-Password authentication:
-What is sources? Why we use sources
-Kerberos system
-What is the responsibility of each server
-What is
-Dfbdj
-II. OS Security
 
 III. Software Security
 
@@ -223,3 +306,8 @@ Software Security
 
 Stack Overflow
 Dj
+
+The fundamental problem
+the fundamental of this attack, the fundamental of prevent this attack
+ask about the paticular tool 
+
