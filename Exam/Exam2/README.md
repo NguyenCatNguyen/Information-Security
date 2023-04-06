@@ -34,13 +34,16 @@
 ### III.Certificate
 - Certificate Authority (CA)
     - CA is a trusted third party who issues certificates
-- CA hierarchy `PIC2`
-- Certificate Verification `PIC3`
+- CA hierarchy
+  ![PIC2](Graphic/PIC2.png)
+- Certificate Verification
+  ![PIC3](Graphic/PIC3.png)
 - Certificate Expiration
     - Certificate holds an expiration date and time
     - Certificate may need to be **revoked** before expiration
     - Revocation is **very important** to PKI
-- Revocation `PIC4`
+- Revocation
+  ![PIC4](Graphic/PIC4.png)
     - Certificate revocation list (CRL)
         - A list of revoked certificates
         - Issued by CA
@@ -53,7 +56,8 @@
         - Signed by CA
         - Distributed to clients
         - Clients check OCSP before using certificate
-- Rogue Certificate `PIC5`
+- Rogue Certificate 
+  ![PIC5](Graphic/PIC5.png)
   
 ### IV.Password authentication
 - Authentication is the process of verifying the identity of a user or system.
@@ -170,21 +174,18 @@
         - Eka(Ka-b, IDb, Tb)
             - Ka-b: session key geneerateed by KDC for Alice and Bob
             - Tb = EKb(Ka-b, IDa, IDb)
-3. `PIC6`
-4. 
+ ![PIC6](Graphic/PIC6.png)
+3. 
 #### Kerberos Messages
-- `PIC7`
-- `PIC8`
-
+![PIC7](Graphic/PIC7.png)
+![PIC8](Graphic/PIC8.png)
 #### Kerberos Discussion
 - The first `single sign-on` system - sign-on once, access all resources
-- The design goal `PIC9`
-- Scenario `PIC10`
-
-- The protocal
+![PIC9](Graphic/PIC9.png)
+![PIC10](Graphic/PIC10.png)
 
 #### Kerberos Term keys
-- `PIC11`
+![PIC11](Graphic/PIC11.png)
 - It provides a centralized authentication service.
 - It can support mutual authentication
 - Entirely based on symmetric cryptography
@@ -195,8 +196,8 @@
 - More scalable  in  a large distributed system.
 #### Kerberos Security
 - The protocol, ticket, session key, authenticator
-- `PIC12`
-- `PIC13`
+  ![PIC12](Graphic/PIC12.png)
+  ![PIC13](Graphic/PIC13.png)
 ## DS Security
 ###  Basic concepts
     - CIA
