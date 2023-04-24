@@ -64,4 +64,43 @@
 | E    | Either    | Any         | Any      | Any       | Deny   |
 
 1. Describe the effect of each rule.
-2. 
+   - `Rule A`: Allow inbound SMTP traffic from external sources to internal servers is permitted through TCP port 25.
+   - `Rule B`: Allow outbound SMTP traffic from internal sources to external server is permitted to use any TCP port number above 1023.
+   - `Rule C`: Allow inbound SMTP traffic from internal sources to internal server is permitted through TCP port 25.
+   - `Rule D`: Allow outbound SMTP traffic from internal sources to external server is permitted to use any port number above 1023.
+   - `Rule E`: Deny all other traffic.
+2. Someone tries to send email from a remote host with IP address 192.168.3.4 to a host with IP address 172.16.1.1. Meanwhile, a user on the host may send e-mail
+to the SMTP server on the remote system. If successful, this generates an SMTP dialogue between the remote user and the SMTP server on the host consisting of 
+SMTP commands and mail. Decide if the following packets should be permitted or denied, and which rule applies.
+
+
+Direction | SRC Address | Dest Address | Protocol   | Dest Port | Action |
+----------|-------------|--------------|------------|-----------|--------|
+Packet 1  | In          |192.168.3.4   |172.16.1.1  |TCP        |25      |
+Packet 2  | Out         |172.16.1.1    |192.168.3.4 |TCP        |1234    |
+Packet 3  | Out         |172.16.1.1    |192.168.3.4 |TCP        |25      |
+Packet 4  | In          |192.168.3.4   |172.16.1.1  |TCP        |1357    |
+
+   - From: 192.168.3.4
+   - To : 172.16.1.1
+
+   - `Packet 1`: Permit, Rule A
+   - `Packet 2`: Permit, Rule B
+   - `Packet 3`: Deny, Rule D (Because the source port is 25 and the destination port is >1023)
+   - `Packet 4`: Deny, Rule A (Because the source port is 1357 and the destination port is 25)
+3. If an attacker (10.1.2.3) attempts to open a connection from port 5150 on a remote host to the Web proxy server on port 8080 on one of the local hosts (172.16.3.4), will the attack succeed? 
+- No the attack will not succeed. Because the firewall will deny the connection. Since the attacker's Destination port is 8080 (need to be 25 if want to success) and the firewall's rule is to deny all other traffic.
+ 
+### 7. Describe the differences between NIDS and HIDS. Can they be combined? 
+- `NIDS` is a network-based intrusion detection system that monitors and analyzes network traffic for suspicious activity.
+- `HIDS` is a host-based intrusion detection system that monitors and analyzes the internals of a computing system as well as the network packets on its network interfaces.
+- `Yes` they can be combined. Since NIDS and HIDS have different roles in monitoring and analyzing network and host activity, and can be combined to provide a more comprehensive approach to intrusion detection and prevention.
+ 
+### 8. In the context of IDS, describe the meaning of false positive and false negative. If we have two IDS systems, IDS1 is less specific and IDS2 is more specific. Compare the alert rates of false positives in two systems. How about false negatives? 
+- `False positive`: is an alert that incorrectly indicates that some attack is taking place.
+- `False negative`: is an alert that fails to indicate that some attack is taking place.
+
+- `IDS1` is less specific, so it will have a higher chance of generating false positive alerts.
+- `IDS2` is more specific, so it will have a higher chance of generating false negative alerts.
+- This mean IDS1 will generating more alerts, some of which will be false alarms, while IDS2 will generate fewer alerts, but they are more likely to be true alerts. However, IDS2 is more likely to miss potential attacks than IDS1.
+
