@@ -55,41 +55,50 @@
    - `Yes`, TLS can also prevent this attack. TLS also uses digital certificates or pre-shared keys as a way to authenticate the communicating parties to prevent this attack.
 ## Firewall and IDS
 ### 6. The table below shows a packet firewall ruleset that allows inbound and outbound SMTP traffic.
-| Rule | Direction | SRC Address | Protocol | Dest Port | Action |
-|------|-----------|-------------|----------|-----------|--------|
-| A    | in        | External    | TCP      | 25        | Permit |
-| B    | out       | Internal    | TCP      | >1023     | Permit |
-| C    | in        | Internal    | TCP      | 25        | Permit |
-| D    | out       | External    | TCP      | >1023     | Permit |
-| E    | Either    | Any         | Any      | Any       | Deny   |
+
+| Rule | Direction | SRC Address | Dest Addr | Protocol | Dest Port | Action |
+|------|-----------|-------------|-----------|----------|-----------|--------|
+| A    | in        | External    | Internal  | TCP      | 25        | Permit |
+| B    | out       | Internal    | External  | TCP      | >1023     | Permit |
+| C    | out       | Internal    | External  | TCP      | 25        | Permit |
+| D    | in        | Internal    | Internal  | TCP      | >1023     | Permit |
+| E    | Either    | Any         | Any       | Any      | Any       | Deny   |
+
+
+
+
 
 1. Describe the effect of each rule.
    - `Rule A`: Allow inbound SMTP traffic from external sources to internal servers is permitted through TCP port 25.
    - `Rule B`: Allow outbound SMTP traffic from internal sources to external server is permitted to use any TCP port number above 1023.
-   - `Rule C`: Allow inbound SMTP traffic from internal sources to internal server is permitted through TCP port 25.
-   - `Rule D`: Allow outbound SMTP traffic from internal sources to external server is permitted to use any port number above 1023.
+   - `Rule C`: Allow inbound SMTP traffic from internal sources to external server is permitted through TCP port 25.
+   - `Rule D`: Allow outbound SMTP traffic from external sources to internal server is permitted to use any port number above 1023.
    - `Rule E`: Deny all other traffic.
 2. Someone tries to send email from a remote host with IP address 192.168.3.4 to a host with IP address 172.16.1.1. Meanwhile, a user on the host may send e-mail
 to the SMTP server on the remote system. If successful, this generates an SMTP dialogue between the remote user and the SMTP server on the host consisting of 
 SMTP commands and mail. Decide if the following packets should be permitted or denied, and which rule applies.
 
 
-Direction | SRC Address | Dest Address | Protocol   | Dest Port | Action |
-----------|-------------|--------------|------------|-----------|--------|
-Packet 1  | In          |192.168.3.4   |172.16.1.1  |TCP        |25      |
-Packet 2  | Out         |172.16.1.1    |192.168.3.4 |TCP        |1234    |
-Packet 3  | Out         |172.16.1.1    |192.168.3.4 |TCP        |25      |
-Packet 4  | In          |192.168.3.4   |172.16.1.1  |TCP        |1357    |
+| Packet  |Direction | SRC Address | Dest Address | Protocol   | Dest Port |
+|---------|----------|-------------|--------------|------------|-----------|
+| 1       | in       |192.168.3.4  |172.16.1.1    |TCP         |25         |
+| 2       | out      |172.16.1.1   |192.168.3.4   |TCP         |1234       |
+| 3       | out      |172.16.1.1   |192.168.3.4   |TCP         |25         |
+| 4       | in       |192.168.3.4  |172.16.1.1    |TCP         |1357       |
+
+
 
    - From: 192.168.3.4
    - To : 172.16.1.1
 
-   - `Packet 1`: Permit, Rule A
-   - `Packet 2`: Permit, Rule B
-   - `Packet 3`: 
-   - `Packet 4`: 
+   - `Packet 1`: Allow, Rule A
+   - `Packet 2`: Allow, Rule B
+   - `Packet 3`: Allow, Rule C
+   - `Packet 4`: Allow, Rule D
+
+
 1. If an attacker (10.1.2.3) attempts to open a connection from port 5150 on a remote host to the Web proxy server on port 8080 on one of the local hosts (172.16.3.4), will the attack succeed? 
-- No the attack will not succeed. Because the firewall will deny the connection. Since the attacker's Destination port is 8080 (need to be 25 if want to success) and the firewall's rule is to deny all other traffic.
+- No the attack will not succeed. Because the firewall will deny the connection. Since the attacker's Destination port is 8080 (need to be 25 if want to success) and the firewall's rule is to deny all other traffic. So the attacker will be denied by rule E.
  
 ### 7. Describe the differences between NIDS and HIDS. Can they be combined? 
 - `NIDS` is a network-based intrusion detection system that monitors and analyzes network traffic for suspicious activity.
