@@ -32,7 +32,7 @@
   - Send the requests to the selected DNS servers. 
   - This will cause amplification by increasing the size of the response packets.
 ### 3. Link-to-link encryption and end-to-end encryption can be used to protect data transmitted over networks. Which means is used by VPN? 
-- VPN uses `end-to-end encryption` to protect data transmitted over networks.
+- VPN uses `end-to-end encryption` to protect data transmitted over networks. Since `link-to-link encryption` only protects data transmitted over a single link.
 ### 4. What security services are provided by TLS? Choose one attack and explain how TLS prevents it. 
 - `TLS` provides the following security services:
   - `Confidentiality`: TLS uses symmetric encryption to provide confidentiality.
@@ -86,9 +86,9 @@ Packet 4  | In          |192.168.3.4   |172.16.1.1  |TCP        |1357    |
 
    - `Packet 1`: Permit, Rule A
    - `Packet 2`: Permit, Rule B
-   - `Packet 3`: Deny, Rule D (Because the source port is 25 and the destination port is >1023)
-   - `Packet 4`: Deny, Rule A (Because the source port is 1357 and the destination port is 25)
-3. If an attacker (10.1.2.3) attempts to open a connection from port 5150 on a remote host to the Web proxy server on port 8080 on one of the local hosts (172.16.3.4), will the attack succeed? 
+   - `Packet 3`: 
+   - `Packet 4`: 
+1. If an attacker (10.1.2.3) attempts to open a connection from port 5150 on a remote host to the Web proxy server on port 8080 on one of the local hosts (172.16.3.4), will the attack succeed? 
 - No the attack will not succeed. Because the firewall will deny the connection. Since the attacker's Destination port is 8080 (need to be 25 if want to success) and the firewall's rule is to deny all other traffic.
  
 ### 7. Describe the differences between NIDS and HIDS. Can they be combined? 
