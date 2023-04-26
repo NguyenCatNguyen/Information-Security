@@ -79,15 +79,16 @@
 - *Ping of Death* send oversize ICMP datagrams to the victim. The victim's system will crash, freeze, or reboot.
 
 ### Source Address Spoofing (a type of DoS attack)
-- A uses forged source address to send a packet to generate large volume of packets to V. CAUSE: V thinks the packet is from a legitimate source and sends a reply to the forged source address.
+- technique used by attackers to falsify the source IP address of their network traffic, make it appear like it is coming from a trusted source. 
+- PURPOSE: use to deceivee and mislead the victim and evade detection or gain access to a network.
 - SOLUTION: study backscatter traffic to detect DoS attacks.In honeynet, advertise routes to unused IP addresses to monitor attack traffic.
 
-### TCP SYN spooding (a type of DoS attack)
+### TCP SYN spoofing (a type of DoS attack)
 - An attack that spoofs the source IP aadress of a TCP SYN packet to prevent the establishment of a TCP connection and consume server resources.
 - PREVENT: SYN cookies, firewall.
 
 
-### SYN spooding (a type of DoS attack)
+### SYN spoofing (a type of DoS attack)
 - A defense technique can be used to prevent SYN flooding attacks by immediately tearing down half-open connections.
 
 ### Flooding (a type of DoS attack)
@@ -109,9 +110,7 @@
 ### Amplification (a type of DoS attack)
 - A type of network-based attack that uses a large number of requests to overwhelm the target's network resources.
 #### **Smurf attack**
-
-
-
+- Attacker spoofs the IP source address as the victim’s IP. Sends a PING request to a broadcast address.
 
 
 
