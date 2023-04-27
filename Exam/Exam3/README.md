@@ -109,39 +109,95 @@
 
 ### Amplification (a type of DoS attack)
 - A type of network-based attack that uses a large number of requests to overwhelm the target's network resources.
+
 #### **Smurf attack**
-- Attacker spoofs the IP source address as the victim’s IP. Sends a PING request to a broadcast address.
+- Attacker spoofs the IP source address as the victim’s IP. Sends a PING request to a broadcast address.Every host on the intermediary network replies(Flooding victim and intermediary network).  
+  
+####  DNS Amplification attack
+- GOAL: overwhelm the target's network resources with a large volume of traffic, make it unavailable to legitimate users.
+- STEP: Selects a large number of legitimate DNS servers as intermediary. Create a series of DNS requests containing the spoofed source address of the victim. Sends the requests to the selected DNS servers.
+- A 60 byte request results in a 512 byte response. Amplification by converting a small request to a  much large response. 
+
+#### Amplification attack
+- A variation of reflector attacks aims to flood the targeet with responses from a large number of intermediary servers.
+- Can be cause by
+  - Increase the number of responses to a single request - Smurf
+  - Increase the size of response packet - DNS Amplification
+  - Directly increasing the number of request - DDoS
+
+### DDoS
+- Overwhelm target or it surrounding with flood od traffic.
+- Attack vulnerable system from exploit system vul or trick into downloading trojan horse or other malicious code. Create zombie network. Use zombie network to launch DDoS attack.
+
+#### DDoS Defenses
+- Cannot be prevented entirely
+- Defenses:
+  - Attack Prevention - before the attack : Block spoofed source addresses on routers, block IP directed broadcasts, block suspicious services and combinations, use reverse filters.
+  - Attack Detection and filtering - during the attack: Capture and analyze packet to identify attacks
+  - Attack Source Traceback and Indentification - during and after the attack
+  - Attack Reaction - after the attack : Implement contingency plan, implement good incident response plan.
+
+# Network Security Controls
+## Control
+### Architecture and Design
+- **Segmentation** is the process of dividing a network into smaller pieces. It is a security best practice that limits the damage of a breach.
+- Demilitarized Zone(DMZ) is a network segment that located between an organization internal network and the public internet. 
 
 
 
-## Controls
-– Design: separation, single point of failure, redundancy, recovery, encryption (link vs. end-to-end)
-– Protocols: SSL/TLS
-■ Provides additional security services
-■ From TLS 1.2 to TLS1.3
-– Protocols: IPsec
-■ Transport Mode vs. Tunnel Mode
-■ AH vs. ESP
-6Network Security
-■ Controls
-– Design: separation, single point of failure, redundancy, recovery, encryption (link vs. end-to-end)
-– Protocols: SSL/TLS
-■ Provides additional security services
-■ From TLS 1.2 to TLS1.3
-– Protocols: IPsec
-■ Transport Mode vs. Tunnel Mode
-■ AH vs. ESP
-6
-Firewall and IDS
-■ Firewall
-– Types of firewalls: strengths and limitations
-– What can be protected, and what cannot?
-■ IDS
-– Fundamental assumption: intruder behavior differs from legitimate users
-– Host-based IDS vs. Network IDS
-– Signature-based IDS vs. anomaly detection IDS
-– Detection quality, Bayesian detection rate, and the base rate fallacy
-7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
